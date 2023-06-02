@@ -69,10 +69,11 @@ class _RegisterState extends State<Register> {
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
+                      obscureText: true,
                       style: inputTextStyle,
                       decoration: textInputFormDecoration.copyWith(
                           hintText: "Enter your password"),
-                      validator: (value) => value!.isEmpty
+                      validator: (value) => value!.length < 8
                           ? "Password must be at least 8 charachters"
                           : null,
                       onChanged: (value) {
@@ -81,10 +82,25 @@ class _RegisterState extends State<Register> {
                         });
                       },
                     ),
+                    const SizedBox(height: 5),
+
+                    // show error
+                    Text(
+                      error,
+                      style: const TextStyle(color: Colors.red),
+                    ),
                     const SizedBox(height: 50),
                     GestureDetector(
                       //methos for user register
-                      onTap: () {},
+                      onTap: () async {
+                        dynamic result = await _auth
+                            .registerWithEmailAndPassword(email, password);
+                        if (result == null) {
+                          setState(() {
+                            error = "Invalid User Credintials";
+                          });
+                        }
+                      },
                       child: Container(
                         width: double.infinity,
                         height: 55,
