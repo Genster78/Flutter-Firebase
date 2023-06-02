@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/constance/colors.dart';
 import 'package:flutter_firebase/constance/styles.dart';
+import 'package:flutter_firebase/services/auth.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,6 +11,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  // refference for the AuthService class
+  final AuthServices _auth = AuthServices();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,9 @@ class _HomeState extends State<Home> {
           const SizedBox(height: 50),
           GestureDetector(
             //log out
-            onTap: () {},
+            onTap: () async {
+              await _auth.signOut();
+            },
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 16),
               width: double.infinity,

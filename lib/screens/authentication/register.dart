@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/constance/colors.dart';
 import 'package:flutter_firebase/constance/styles.dart';
+import 'package:flutter_firebase/services/auth.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -10,6 +11,9 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  // refference fon AuthService class
+  final AuthServices _auth = AuthServices();
+
   // create form key
   final _formKey = GlobalKey<FormState>();
 
@@ -80,7 +84,7 @@ class _RegisterState extends State<Register> {
                     const SizedBox(height: 50),
                     GestureDetector(
                       //methos for user register
-                      onTap: (){},
+                      onTap: () {},
                       child: Container(
                         width: double.infinity,
                         height: 55,
@@ -107,7 +111,7 @@ class _RegisterState extends State<Register> {
                         const SizedBox(width: 10),
                         GestureDetector(
                           // method for navigate sign in page
-                          onTap: (){},
+                          onTap: () {},
                           child: const Text(
                             "Sign In",
                             style: TextStyle(
