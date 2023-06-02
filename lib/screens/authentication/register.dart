@@ -34,6 +34,14 @@ class _RegisterState extends State<Register> {
                 "Welcome Onboard!",
                 style: TextStyle(fontSize: 30, color: mainBlack),
               ),
+              const Text(
+                "Lets help you meet your tasks",
+                style: TextStyle(
+                  fontSize: 21,
+                  color: mainBlack,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
               const SizedBox(height: 40),
               Image.asset(
                 "assets/notifications.png",
@@ -70,30 +78,22 @@ class _RegisterState extends State<Register> {
                       },
                     ),
                     const SizedBox(height: 50),
-                    Container(
-                      width: double.infinity,
-                      height: 55,
-                      decoration: buttonDecoration,
-                      child: const Center(
-                        child: Text(
-                          "Register",
-                          style: buttonTextStyle,
+                    GestureDetector(
+                      //methos for user register
+                      onTap: (){},
+                      child: Container(
+                        width: double.infinity,
+                        height: 55,
+                        decoration: buttonDecoration,
+                        child: const Center(
+                          child: Text(
+                            "Register",
+                            style: buttonTextStyle,
+                          ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    Container(
-                      width: double.infinity,
-                      height: 55,
-                      decoration: buttonDecoration,
-                      child: const Center(
-                        child: Text(
-                          "Sign in Anonymously",
-                          style: buttonTextStyle,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 100),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -105,12 +105,15 @@ class _RegisterState extends State<Register> {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        const Text(
-                          "Sign In",
-                          style: TextStyle(
-                            color: acentcolor,
-                            fontSize: 19,
-                            fontWeight: FontWeight.w900
+                        GestureDetector(
+                          // method for navigate sign in page
+                          onTap: (){},
+                          child: const Text(
+                            "Sign In",
+                            style: TextStyle(
+                                color: acentcolor,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w900),
                           ),
                         ),
                       ],
