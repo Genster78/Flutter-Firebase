@@ -102,7 +102,9 @@ class _RegisterState extends State<Register> {
                       onTap: () async {
                         dynamic result = await _auth
                             .registerWithEmailAndPassword(email, password);
+                        
                         if (result == null) {
+                          // show error
                           setState(() {
                             error = "Invalid User Credintials";
                           });

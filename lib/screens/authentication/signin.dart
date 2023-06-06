@@ -67,6 +67,7 @@ class _SignInState extends State<SignIn> {
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
+                      obscureText: true,
                       style: inputTextStyle,
                       decoration: textInputFormDecoration.copyWith(
                           hintText: "Enter your password"),
@@ -86,7 +87,7 @@ class _SignInState extends State<SignIn> {
                         dynamic result = await _auth.signInWithEmailAndPassword(email, password);
 
                         if (result == null) {
-                          error = "User redintial not found";
+                          error = "User credential not found";
                         }
                       },
                       child: Container(
