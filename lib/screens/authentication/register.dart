@@ -1,10 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:flutter_firebase/constance/colors.dart';
 import 'package:flutter_firebase/constance/styles.dart';
 import 'package:flutter_firebase/services/auth.dart';
 
 class Register extends StatefulWidget {
-  const Register({super.key});
+  // toggle function
+  final Function toggle;
+  const Register({
+    Key? key,
+    required this.toggle,
+  }) : super(key: key);
 
   @override
   State<Register> createState() => _RegisterState();
@@ -127,7 +134,9 @@ class _RegisterState extends State<Register> {
                         const SizedBox(width: 10),
                         GestureDetector(
                           // method for navigate sign in page
-                          onTap: () {},
+                          onTap: () {
+                            widget.toggle();
+                          },
                           child: const Text(
                             "Sign In",
                             style: TextStyle(

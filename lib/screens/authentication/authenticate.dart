@@ -10,8 +10,20 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+  bool signInPage = true;
+
+  // toggle page function
+  void switchPages (){
+    setState(() {
+      signInPage = !signInPage;
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return Register();
+    if (signInPage == true){
+      return SignIn(toggle: switchPages);
+    } else {
+      return Register(toggle: switchPages);
+    }
   }
 }

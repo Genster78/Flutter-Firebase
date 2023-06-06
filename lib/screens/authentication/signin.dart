@@ -1,10 +1,17 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:flutter_firebase/constance/colors.dart';
 import 'package:flutter_firebase/constance/styles.dart';
 import 'package:flutter_firebase/services/auth.dart';
 
 class SignIn extends StatefulWidget {
-  const SignIn({super.key});
+  // toggle function
+  final Function toggle;
+  const SignIn({
+    Key? key,
+    required this.toggle,
+  }) : super(key: key);
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -75,7 +82,13 @@ class _SignInState extends State<SignIn> {
                     const SizedBox(height: 50),
                     GestureDetector(
                       //method for user sign in
-                      onTap: () {},
+                      onTap: () async {
+                        dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+
+                        if (result == null) {
+                          error = "User redintial not found";
+                        }
+                      },
                       child: Container(
                         width: double.infinity,
                         height: 55,
@@ -126,7 +139,9 @@ class _SignInState extends State<SignIn> {
                         const SizedBox(width: 10),
                         GestureDetector(
                           // method for navigate register page
-                          onTap: () {},
+                          onTap: () {
+                            widget.toggle();
+                          },
                           child: const Text(
                             "Register",
                             style: TextStyle(
